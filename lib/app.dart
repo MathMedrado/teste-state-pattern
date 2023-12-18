@@ -5,7 +5,7 @@ import 'package:login_with_state/src/login/login_page.dart';
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  final Login = "login";
+  static const Login = "login";
 
   @override
   Widget build(BuildContext context) {

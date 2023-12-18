@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_with_state/app.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -13,7 +14,7 @@ class HomePage extends StatelessWidget {
           Center(
             child: ElevatedButton(
               onPressed: (){
-                Navigator.of(context).pushNamed("");
+                Navigator.of(context).pushNamed(MyApp.Login);
               }, 
               child: const Text("Login")
             ),

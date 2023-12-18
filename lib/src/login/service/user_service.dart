@@ -6,15 +6,28 @@ class UserService {
   Dio dio;
 
   UserService({required this.dio});
+  
 
   Future<UserModel> verifyLogin(String email, String password) async {
+    
+    dio.options.headers['content-Type'] = 'application/json';
+    dio.options.headers['accept'] = 'application/json';
+
     String url = "http://localhost:8080/user/login";
     Map<String, dynamic > body = {
-      email : email,
-      password : password
+      "email" : email,
+      "password" : password
     };
 
-    Response response = await dio.post(url, data: body);
+    Response response = await dio.post(
+      url, 
+      data: body,
+      options: Options(
+      followRedirects: false,
+      validateStatus: (status){
+        return status! < 500;
+      })
+    );
 
     if(response.statusCode == 200){
       var data = response.data;
